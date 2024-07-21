@@ -20,8 +20,22 @@ class CategoryController extends Controller
         $request->validate([
             'name' => 'required'
         ]);
-
-        //Category::create
+        Category::create($request->all());
+        return redirect()->route('categories.index')
+            ->with('sucess', 'Category created successfully.');
     }
 
+    public function edit(Category $category) {
+        return view('categories.edit', compact('category'));
+    }
+
+    public function update(Request $request, Category $category) {
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $category->update($request->all());
+        return redirect()->route('categories.index')
+            ->with('success', 'Category deleted successfully.');
+    }
 }
