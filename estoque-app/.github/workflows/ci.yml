@@ -2,14 +2,14 @@ on: push
 jobs:
   build: 
     runs-on: ubuntu-latest
-    # container: 
-    #  image: kirschbaumdevelopment/laravel-test-runner
+    container: 
+      image: kirschbaumdevelopment/laravel-test-runner
     steps:
-      #- uses: actions/checkout@v2
-      #  with: 
-      #    fetch-depth: 1
-      #- name: Prepare Laravel App
-      #  run: cp.env.ci .env
+      - uses: actions/checkout@v2
+        with: 
+          fetch-depth: 1
+      - name: Prepare Laravel App
+        run: cp.env.ci .env
       - name: Hello Github Actions
         run: echo "Tudo certo!"
 
